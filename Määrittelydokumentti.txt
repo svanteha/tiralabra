@@ -1,0 +1,22 @@
+Määrittelydokumentti
+
+1. Mitä algoritmeja ja tietorakenteita toteutat työssäsi?
+2. Mitä ongelmaa ratkaiset ja miksi valitsit kyseiset algoritmit/tietorakenteet?
+3. Mitä syötteitä ohjelma saa ja miten näitä käytetään?
+4. Tavoitteena olevat aika- ja tilavaativuudet (m.m. O-analyysi)?
+5. Lähteet?
+--------------------------------------------------------------------------------
+
+1. Tulen toteuttamaan reitinhakualgoritmeja, aluksi ainakin A* ja Dijkstra koska ne  ovat kiinnostavat ja olen aina halunnut toteuttaa ne. Jonkunlainen priority queue tulen toteuttamaan tietorakenteeksi.
+
+2. Ongelma on löytää lyhin reitti ja kiinnostaa miten heurestiikkaa vaikuttaa lopputulokseen.
+
+3. Ohjelma saa käyttäjältä syötteenä kartan koon, sekä jonkun prosentuaalisen määrän tyhjiä kohtia.
+
+4. A* aikavaativuus on Manhattan etäisyydellä O(log n)
+   Tilavaativuus on O(n)
+   Dijkstran aikavaativuus on pahimillaan O(|E|+|V|\log|V|)
+   Tilavaativuus on O(n)
+
+5. http://en.wikipedia.org/wiki/Dijkstra's_algorithm
+   http://en.wikipedia.org/wiki/A*_search_algorithm
