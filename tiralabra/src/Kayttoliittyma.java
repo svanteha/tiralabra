@@ -8,10 +8,12 @@ import java.util.*;
 public class Kayttoliittyma {
     
     private Scanner lukija = new Scanner(System.in);
+    private Logiikka logiikka;
     
     public void start() {
-        ohje();
-        lueInt();
+        
+        logiikka = new Logiikka(kartanKorkeus(), kartanLeveys(), algoritmi());
+        logiikka.tulostaKartta();
         
     }
     
@@ -23,13 +25,22 @@ public class Kayttoliittyma {
             return lueInt();
         }
     }
+    private int algoritmi() {
+        System.out.println("Valitse algoritmi!");
+        System.out.println("1: A*");
+        System.out.println("2: Dijkstra");
+        return lueInt();
+    }
     
-    private void ohje(){
-        System.out.println("Kirjoita syöte!");
-        System.out.println("1 - Käytä A*-reitinhakua");
-        System.out.println("2 - Käytä Dijkstra-reitinhakua");
-        System.out.println("3 - Tulosta ohje");
-        System.out.println("Kaikki muut syötteet lopettaa ohjelman");
+    private int kartanLeveys() {
+        System.out.println("Anna kartan leveys");
+        return lueInt();
+        
+    }
+    
+    private int kartanKorkeus() {
+        System.out.println("Anna kartan korkeus");
+        return lueInt();
     }
     
     
