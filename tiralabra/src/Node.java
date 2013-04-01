@@ -40,11 +40,7 @@ public class Node {
     }
 
     public int getMatkaMaaliin() {
-        return matkaMaaliin;
-    }
-
-    public void setMatkaMaaliin(int matkaMaaliin) {
-        this.matkaMaaliin = matkaMaaliin;
+        return matkaMaaliin + reitti.length();
     }
 
     public int getValue() {
@@ -59,8 +55,8 @@ public class Node {
         return reitti;
     }
 
-    public void setReitti(String reitti) {
-        this.reitti = reitti;
+    public void setReitti(String reitti, char suunta) {
+        this.reitti = reitti + suunta;
     }
     
     

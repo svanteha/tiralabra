@@ -14,6 +14,7 @@ public class Kayttoliittyma {
         
         logiikka = new Logiikka(kartanKorkeus(), kartanLeveys(), algoritmi());
         logiikka.tulostaKartta();
+        logiikka.haeReitti();
         
     }
     
