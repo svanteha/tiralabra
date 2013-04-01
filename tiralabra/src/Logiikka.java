@@ -17,6 +17,7 @@ public class Logiikka {
     private int korkeus;
     private int leveys;
     private int algoritmi; //1 = A*, 2 = Dijkstra
+    private boolean loytyi;
 
     
     public Logiikka(int korkeus, int leveys, int algoritmi) {
@@ -43,6 +44,7 @@ public class Logiikka {
             
             if (thisY == nodeKartta.length - 1 && thisX == nodeKartta[0].length - 1) {
                 System.out.println("LÖYTYI!");
+                loytyi = true;
                 break;
             }
             
@@ -53,6 +55,7 @@ public class Logiikka {
             
             if (keko.isEmpty()) {
                 System.out.println("EI LÖYTYNYT!");
+                loytyi = false;
                 break;
             }
         }
@@ -67,7 +70,12 @@ public class Logiikka {
         mapGenerator.printMap(reittiKartta());
     }
     
+    public boolean onkoReittia() {
+        return loytyi;
+    }
+    
     public char[][] reittiKartta() {
+        
         char[][] reittiKartta = new char[kartta.length][kartta[0].length];
         Node maali = nodeKartta[nodeKartta.length - 1][nodeKartta[0].length - 1];
         String reitti = maali.getReitti();
