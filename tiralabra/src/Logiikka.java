@@ -1,5 +1,4 @@
 
-import java.util.PriorityQueue;
 
 /*
  * To change this template, choose Tools | Templates
@@ -44,7 +43,6 @@ public class Logiikka {
             
             if (thisY == nodeKartta.length - 1 && thisX == nodeKartta[0].length - 1) {
                 System.out.println("LÖYTYI!");
-                //System.out.println("reitti: " + nodeKartta[nodeKartta.length-1][nodeKartta[0].length-1].getReitti());
                 break;
             }
             
@@ -63,6 +61,51 @@ public class Logiikka {
     
     public void tulostaKartta(){
         mapGenerator.printMap(kartta);
+    }
+    
+    public void tulostaReitti(){
+        mapGenerator.printMap(reittiKartta());
+    }
+    
+    public char[][] reittiKartta() {
+        char[][] reittiKartta = new char[kartta.length][kartta[0].length];
+        Node maali = nodeKartta[nodeKartta.length - 1][nodeKartta[0].length - 1];
+        String reitti = maali.getReitti();
+        
+        for (int i = 0; i < kartta.length; i++) {
+            for (int j = 0; j < kartta[0].length; j++) {
+                
+                reittiKartta[i][j] = kartta[i][j];
+                
+            }               
+        }
+        
+        int x = 0;
+        int y = 0;
+        
+        for (int i = 0; i < reitti.length(); i++) {
+            
+            if (reitti.charAt(i) == 'U') {
+                reittiKartta[y][x] = '*';
+                y--;
+            }
+            if (reitti.charAt(i) == 'D') {
+                reittiKartta[y][x] = '*';
+                y++;
+            }
+            if (reitti.charAt(i) == 'L') {
+                reittiKartta[y][x] = '*';
+                x--;
+            }
+            if (reitti.charAt(i) == 'R') {
+                reittiKartta[y][x] = '*';
+                x++;
+            }
+            
+        }
+        reittiKartta[0][0] = '*';
+        reittiKartta[y][x] = '*';
+        return reittiKartta;
     }
 
     private Node[][] luoNodeKartta(char[][] kartta) {
