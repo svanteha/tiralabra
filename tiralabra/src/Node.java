@@ -12,14 +12,14 @@ public class Node {
     private int x;
     private int y;
     private int matkaMaaliin;
-    private int lyhyinReitti;
+    private int value;
     private String reitti;
     
     public Node(int y, int x, int kartanKorkeus, int kartanLeveys) {
         this.x = x;
         this.y = y;
         this.matkaMaaliin = (kartanKorkeus - y) + (kartanLeveys - x);
-        this.lyhyinReitti = Integer.MAX_VALUE;
+        this.value = Integer.MAX_VALUE;
         this.reitti = "";
     }
 
@@ -47,12 +47,12 @@ public class Node {
         this.matkaMaaliin = matkaMaaliin;
     }
 
-    public int getLyhyinReitti() {
-        return lyhyinReitti;
+    public int getValue() {
+        return value;
     }
 
-    public void setLyhyinReitti(int lyhyinReitti) {
-        this.lyhyinReitti = lyhyinReitti;
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public String getReitti() {
