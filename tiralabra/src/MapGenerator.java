@@ -33,7 +33,7 @@ public class MapGenerator {
         kartta[korkeus-1][leveys-1] = '*';
         
         //seinät, aluksi kokeillaan 30% seiniä
-        double laskuri = (korkeus * leveys) * (50 * 0.01);
+        double laskuri = (korkeus * leveys) * (30 * 0.01);
         
         while (laskuri > 0) {
             

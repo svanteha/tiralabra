@@ -13,13 +13,14 @@ public class MinHeap {
         max = maxSize;
         size = 0;
         heap = new Node[max];
-
+        
 
     }
 
     public void insert(Node node) {
-
-        if (isEmpty()) {
+       
+        
+        if (isEmpty()) {         
             size++;
             heap[size] = node;
         } else {
@@ -32,7 +33,7 @@ public class MinHeap {
                 current = parent(current);
             }
         }
-
+        
     }
 
     public Node pop() {
@@ -46,6 +47,13 @@ public class MinHeap {
 
     public boolean isEmpty() {
         return (size == 0);
+    }
+    
+    public void printHeap() {
+	int i;
+	for (i=1; i<=size;i++)
+	    System.out.print(heap[i].getReitti() + " ");
+	System.out.println();
     }
 
     private void pushDown(int pos) {

@@ -24,7 +24,7 @@ public class Logiikka {
         this.korkeus = korkeus;
         this.leveys = leveys;
         this.algoritmi = algoritmi;
-        this.mapGenerator = new MapGenerator(korkeus, leveys);
+        this.mapGenerator = new MapGenerator(this.korkeus, this.leveys);
         this.kartta = mapGenerator.generateMap();
         this.nodeKartta = luoNodeKartta(kartta);
         
@@ -32,8 +32,8 @@ public class Logiikka {
     
     public void haeReitti() {
         int koko = (kartta.length * kartta[0].length);
-        MinHeap keko = new MinHeap(koko);
         Node node = nodeKartta[0][0];
+        MinHeap keko = new MinHeap(koko);
         keko.insert(node);
         
         while (true) {
@@ -44,13 +44,14 @@ public class Logiikka {
             
             if (thisY == nodeKartta.length - 1 && thisX == nodeKartta[0].length - 1) {
                 System.out.println("LÖYTYI!");
+                //System.out.println("reitti: " + nodeKartta[nodeKartta.length-1][nodeKartta[0].length-1].getReitti());
                 break;
             }
             
-            checkUp(thisY, thisX, keko);
-            checkDown(thisY, thisX, keko);
-            checkLeft(thisY, thisX, keko);
-            checkRight(thisY, thisX, keko);
+            checkUp(thisY, thisX, node, keko);
+            checkDown(thisY, thisX, node, keko);
+            checkLeft(thisY, thisX, node, keko);
+            checkRight(thisY, thisX, node, keko);
             
             if (keko.isEmpty()) {
                 System.out.println("EI LÖYTYNYT!");
@@ -74,65 +75,63 @@ public class Logiikka {
                 if (i == 0 & j == 0) {
                     node.setValue(0);
                 }
-//                System.out.println("NodeY: " + node.getY());
-//                System.out.println("NodeX:" + node.getX());
             }
             
         }
         return nodeKartta;
     }
 
-    private void checkUp(int thisY, int thisX, MinHeap keko) {
+    private void checkUp(int thisY, int thisX, Node node, MinHeap keko) {
         if (thisY > 0 && kartta[thisY - 1][thisX] != '#' && nodeKartta[thisY - 1][thisX].getValue() == Integer.MAX_VALUE) {
             Node up = nodeKartta[thisY - 1][thisX];
-            up.setReitti(up.getReitti(), 'U');
+            up.setReitti(node.getReitti(), 'U');
             if(algoritmi == 1) {
-                up.setValue(up.getValue() + 1 + up.getMatkaMaaliin());
+                up.setValue(node.getValue() + 1 + up.getMatkaMaaliin());
             }
             else {
-                up.setValue(up.getValue() + 1);
+                up.setValue(node.getValue() + 1);
             }
             keko.insert(up);            
         }
     }
 
-    private void checkDown(int thisY, int thisX, MinHeap keko) {
+    private void checkDown(int thisY, int thisX, Node node, MinHeap keko) {
         if (thisY < kartta.length - 1 && kartta[thisY + 1][thisX] != '#' && nodeKartta[thisY + 1][thisX].getValue() == Integer.MAX_VALUE) {
             Node down = nodeKartta[thisY + 1][thisX];
-            down.setReitti(down.getReitti(), 'D');
+            down.setReitti(node.getReitti(), 'D');
             if(algoritmi == 1) {
-                down.setValue(down.getValue() + 1 + down.getMatkaMaaliin());
+                down.setValue(node.getValue() + 1 + down.getMatkaMaaliin());
             }
             else {
-                down.setValue(down.getValue() + 1);
+                down.setValue(node.getValue() + 1);
             }
             keko.insert(down);            
         }
     }
 
-    private void checkLeft(int thisY, int thisX, MinHeap keko) {
+    private void checkLeft(int thisY, int thisX, Node node, MinHeap keko) {
         if (thisX > 0 && kartta[thisY][thisX - 1] != '#' && nodeKartta[thisY][thisX - 1].getValue() == Integer.MAX_VALUE) {
             Node left = nodeKartta[thisY][thisX - 1];
-            left.setReitti(left.getReitti(), 'L');
+            left.setReitti(node.getReitti(), 'L');
             if(algoritmi == 1) {
-                left.setValue(left.getValue() + 1 + left.getMatkaMaaliin());
+                left.setValue(node.getValue() + 1 + left.getMatkaMaaliin());
             }
             else {
-                left.setValue(left.getValue() + 1);
+                left.setValue(node.getValue() + 1);
             }
             keko.insert(left);            
         }
     }
 
-    private void checkRight(int thisY, int thisX, MinHeap keko) {
+    private void checkRight(int thisY, int thisX, Node node, MinHeap keko) {
         if (thisX < kartta[0].length - 1 && kartta[thisY][thisX + 1] != '#' && nodeKartta[thisY][thisX + 1].getValue() == Integer.MAX_VALUE) {
             Node right = nodeKartta[thisY][thisX + 1];
-            right.setReitti(right.getReitti(), 'R');
+            right.setReitti(node.getReitti(), 'R');
             if(algoritmi == 1) {
-                right.setValue(right.getValue() + 1 + right.getMatkaMaaliin());
+                right.setValue(node.getValue() + 1 + right.getMatkaMaaliin());
             }
             else {
-                right.setValue(right.getValue() + 1);
+                right.setValue(node.getValue() + 1);
             }
             keko.insert(right);            
         }
