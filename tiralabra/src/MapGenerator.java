@@ -1,5 +1,7 @@
 
+import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class MapGenerator {
@@ -7,11 +9,38 @@ public class MapGenerator {
     private int korkeus;
     private int leveys;
     private Random random;
+    private Scanner scanner;
     
     public MapGenerator (int korkeus, int leveys) {
         this.random = new Random();
         this.korkeus = korkeus;
         this.leveys = leveys;
+        this.scanner = new Scanner(System.in);
+    }
+    
+    public char[][] manualMapGeneration() {
+        
+        char[][] kartta = new char[korkeus][leveys];
+        
+        System.out.println("Kirjoita kartta: tyhjä vastaa tyhjää, kaikki muut luetaan seiniksi");
+        for (int i = 0; i < kartta.length; i++) {
+            for (int j = 0; j < kartta.length; j++) {
+                String syote = scanner.nextLine();
+                if (syote.length() == 0) {
+                    kartta[i][j] = '.';
+                }
+                else {
+                    kartta[i][j] = '#';
+                }
+                printMap(kartta);
+            }
+
+        }
+        
+        kartta[0][0] = '*';
+        kartta[korkeus-1][leveys-1] = '*';
+        
+        return kartta;
     }
     
     public char[][] generateMap() {

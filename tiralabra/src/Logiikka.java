@@ -1,4 +1,7 @@
 
+import java.io.IOException;
+
+
 
 /*
  * To change this template, choose Tools | Templates
@@ -18,16 +21,26 @@ public class Logiikka {
     private int leveys;
     private int algoritmi; //1 = A*, 2 = Dijkstra
     private boolean loytyi;
+    private boolean omaKartta;
 
     
-    public Logiikka(int korkeus, int leveys, int algoritmi) {
+    public Logiikka(int korkeus, int leveys, int algoritmi, boolean omaKartta) {
         this.korkeus = korkeus;
         this.leveys = leveys;
         this.algoritmi = algoritmi;
         this.mapGenerator = new MapGenerator(this.korkeus, this.leveys);
-        this.kartta = mapGenerator.generateMap();
-        this.nodeKartta = luoNodeKartta(kartta);
+        this.omaKartta = omaKartta;
         
+    }
+    
+    public void alustaKartta() {
+        if (omaKartta) {
+            this.kartta = mapGenerator.manualMapGeneration();
+        }
+        else {
+            this.kartta = mapGenerator.generateMap();
+        }
+        this.nodeKartta = luoNodeKartta(kartta);
     }
     
     public void haeReitti() {

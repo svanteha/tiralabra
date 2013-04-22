@@ -12,12 +12,18 @@ public class Kayttoliittyma {
     
     public void start() {
         
-        logiikka = new Logiikka(kartanKorkeus(), kartanLeveys(), algoritmi());
-        logiikka.tulostaKartta();
+        logiikka = new Logiikka(kartanKorkeus(), kartanLeveys(), algoritmi(), omaKartta());
+        logiikka.alustaKartta();
+        //logiikka.tulostaKartta();
+        long start = System.nanoTime();
         logiikka.haeReitti();
-        if (logiikka.onkoReittia()) {
-            logiikka.tulostaReitti();
-        }
+        long end = System.nanoTime();
+        long aika = end - start;
+        double sekuntit = (double) aika / 1000000000.0;
+        System.out.println("aikaa reitin löytämiseen kului " + sekuntit + " sekuntia");
+//        if (logiikka.onkoReittia()) {
+//            logiikka.tulostaReitti();
+//        }
         
         
     }
@@ -46,6 +52,15 @@ public class Kayttoliittyma {
     private int kartanKorkeus() {
         System.out.println("Anna kartan korkeus");
         return lueInt();
+    }
+    
+    private boolean omaKartta() {
+        System.out.println("Haluatko kirjoittaa kartan käsin? y/kyllä");
+        
+        if (lukija.nextLine().equals("y")) {
+            return true;
+        }
+        return false;
     }
     
     
