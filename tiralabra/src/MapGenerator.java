@@ -1,5 +1,3 @@
-
-import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,6 +8,7 @@ public class MapGenerator {
     private int leveys;
     private Random random;
     private Scanner scanner;
+    private int tod;
     
     public MapGenerator (int korkeus, int leveys) {
         this.random = new Random();
@@ -17,6 +16,14 @@ public class MapGenerator {
         this.leveys = leveys;
         this.scanner = new Scanner(System.in);
     }
+
+    public MapGenerator(int korkeus, int leveys, int tod) {
+        this.random = new Random();
+        this.korkeus = korkeus;
+        this.leveys = leveys;
+        this.tod = tod;
+    }
+    
     
     public char[][] manualMapGeneration() {
         
@@ -24,7 +31,7 @@ public class MapGenerator {
         
         System.out.println("Kirjoita kartta: tyhjä vastaa tyhjää, kaikki muut luetaan seiniksi");
         for (int i = 0; i < kartta.length; i++) {
-            for (int j = 0; j < kartta.length; j++) {
+            for (int j = 0; j < kartta[0].length; j++) {
                 String syote = scanner.nextLine();
                 if (syote.length() == 0) {
                     kartta[i][j] = '.';
@@ -61,8 +68,7 @@ public class MapGenerator {
         //maali
         kartta[korkeus-1][leveys-1] = '*';
         
-        //seinät, aluksi kokeillaan 30% seiniä
-        double laskuri = (korkeus * leveys) * (10 * 0.01);
+        double laskuri = (korkeus * leveys) * (tod * 0.01);
         
         while (laskuri > 0) {
             

@@ -9,23 +9,32 @@ public class Kayttoliittyma {
     
     private Scanner lukija = new Scanner(System.in);
     private Logiikka logiikka;
+    private boolean omaK;
     
     public void start() {
         
-        logiikka = new Logiikka(kartanKorkeus(), kartanLeveys(), algoritmi(), omaKartta());
+        logiikka = new Logiikka(kartanKorkeus(), kartanLeveys(), algoritmi(), omaKartta(), seinienTod());
         logiikka.alustaKartta();
-        //logiikka.tulostaKartta();
+//        logiikka.tulostaKartta();
         long start = System.nanoTime();
         logiikka.haeReitti();
         long end = System.nanoTime();
         long aika = end - start;
         double sekuntit = (double) aika / 1000000000.0;
         System.out.println("aikaa reitin löytämiseen kului " + sekuntit + " sekuntia");
-//        if (logiikka.onkoReittia()) {
-//            logiikka.tulostaReitti();
-//        }
+        if (logiikka.onkoReittia()) {
+            logiikka.tulostaReitti();
+        }
         
         
+    }
+    
+    private int seinienTod() {
+        if (omaK) {
+            return 0;
+        }
+        System.out.println("Kuinka suurella prosentilla seiniä?");
+        return lueInt();
     }
     
     private int lueInt() {
@@ -58,6 +67,7 @@ public class Kayttoliittyma {
         System.out.println("Haluatko kirjoittaa kartan käsin? y/kyllä");
         
         if (lukija.nextLine().equals("y")) {
+            omaK = true;
             return true;
         }
         return false;

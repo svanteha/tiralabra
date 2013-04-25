@@ -22,22 +22,25 @@ public class Logiikka {
     private int algoritmi; //1 = A*, 2 = Dijkstra
     private boolean loytyi;
     private boolean omaKartta;
+    private int seinienTod;
 
     
-    public Logiikka(int korkeus, int leveys, int algoritmi, boolean omaKartta) {
+    public Logiikka(int korkeus, int leveys, int algoritmi, boolean omaKartta, int seinienTod) {
         this.korkeus = korkeus;
         this.leveys = leveys;
         this.algoritmi = algoritmi;
-        this.mapGenerator = new MapGenerator(this.korkeus, this.leveys);
         this.omaKartta = omaKartta;
+        this.seinienTod = seinienTod;
         
     }
     
     public void alustaKartta() {
         if (omaKartta) {
+            this.mapGenerator = new MapGenerator(this.korkeus, this.leveys);
             this.kartta = mapGenerator.manualMapGeneration();
         }
         else {
+            this.mapGenerator = new MapGenerator(this.korkeus, this.leveys, seinienTod);
             this.kartta = mapGenerator.generateMap();
         }
         this.nodeKartta = luoNodeKartta(kartta);
