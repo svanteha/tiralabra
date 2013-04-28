@@ -1,9 +1,12 @@
+package tiralabra.kaytto;
+
 
 /**
  *
  * @author svanteha
  */
 import java.util.*;
+import tiralabra.logiikka.Logiikka;
 
 public class Kayttoliittyma {
 
@@ -65,7 +68,7 @@ public class Kayttoliittyma {
     }
 
     private boolean omaKartta() {
-        System.out.println("Haluatko kirjoittaa kartan käsin? y/kyllä");
+        System.out.println("Haluatko kirjoittaa kartan kasin? y/kylla");
 
         if (lukija.nextLine().equals("y")) {
             omaKartta = true;

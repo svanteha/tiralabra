@@ -1,7 +1,9 @@
+package tiralabra.heap;
+
 
 /**
  *
- * @author svanteha
+ * @author Svante Häggblom
  */
 public class MinHeap {
 

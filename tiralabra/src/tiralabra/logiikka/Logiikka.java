@@ -1,4 +1,13 @@
+package tiralabra.logiikka;
 
+import tiralabra.heap.MinHeap;
+import tiralabra.heap.Node;
+
+
+/**
+ *
+ * @author Svante Häggblom
+ */
 public class Logiikka {
     
     private MapGenerator mapGenerator;

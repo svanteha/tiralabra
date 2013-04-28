@@ -1,3 +1,13 @@
+package tiralabra.kaytto;
+
+
+import tiralabra.kaytto.Kayttoliittyma;
+
+
+/**
+ *
+ * @author Svante Häggblom
+ */
 public class Tiralabra {
 
     /**

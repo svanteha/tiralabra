@@ -1,20 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+package tiralabra.heap;
+
 
 /**
  *
- * @author svanteha
+ * @author Svante Häggblom
  */
 public class Node {
-    
+
     private int x;
     private int y;
     private int matkaMaaliin;
     private int value;
     private String reitti;
-    
+
     public Node(int y, int x, int kartanKorkeus, int kartanLeveys) {
         this.x = x;
         this.y = y;
@@ -58,7 +56,4 @@ public class Node {
     public void setReitti(String reitti, char suunta) {
         this.reitti = reitti + suunta;
     }
-    
-    
-    
 }

@@ -1,3 +1,10 @@
+package tiralabra.logiikka;
+
+
+/**
+ *
+ * @author Svante Häggblom
+ */
 import java.util.Random;
 import java.util.Scanner;
 
