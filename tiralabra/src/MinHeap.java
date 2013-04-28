@@ -17,7 +17,6 @@ public class MinHeap {
 
     public void insert(Node node) {
 
-
         if (isEmpty()) {
             size++;
             heap[size] = node;
@@ -25,7 +24,7 @@ public class MinHeap {
             size++;
             heap[size] = node;
             int current = size;
-
+            //lisätään node oikeaan paikkaan
             while (heap[current].getValue() < heap[parent(current)].getValue()) {
                 swap(current, parent(current));
                 current = parent(current);

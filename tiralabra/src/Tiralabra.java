@@ -1,7 +1,3 @@
-/**
- *
- * @author svantehaggblom
- */
 public class Tiralabra {
 
     /**

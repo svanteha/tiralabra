@@ -1,17 +1,4 @@
 
-import java.io.IOException;
-
-
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author svanteha
- */
 public class Logiikka {
     
     private MapGenerator mapGenerator;
@@ -133,19 +120,19 @@ public class Logiikka {
     }
 
     private Node[][] luoNodeKartta(char[][] kartta) {
-        Node[][] nodeKartta = new Node[kartta.length][kartta[0].length];
+        Node[][] nodeK = new Node[kartta.length][kartta[0].length];
         
         for (int i = 0; i < kartta.length; i++) {
             for (int j = 0; j < kartta[0].length; j++) {
                 Node node = new Node(i, j, kartta.length - 1, kartta[0].length - 1);
-                nodeKartta[i][j] = node;
+                nodeK[i][j] = node;
                 if (i == 0 & j == 0) {
                     node.setValue(0);
                 }
             }
             
         }
-        return nodeKartta;
+        return nodeK;
     }
 
     private void checkUp(int thisY, int thisX, Node node, MinHeap keko) {

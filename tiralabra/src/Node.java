@@ -18,7 +18,7 @@ public class Node {
     public Node(int y, int x, int kartanKorkeus, int kartanLeveys) {
         this.x = x;
         this.y = y;
-        this.matkaMaaliin = (kartanKorkeus - y) + (kartanLeveys - x);
+        this.matkaMaaliin = (kartanKorkeus - y) + (kartanLeveys - x); //manhattan
         this.value = Integer.MAX_VALUE;
         this.reitti = "";
     }

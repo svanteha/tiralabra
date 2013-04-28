@@ -8,7 +8,7 @@ public class MapGenerator {
     private int leveys;
     private Random random;
     private Scanner scanner;
-    private int tod;
+    private int seinienTod;
     
     public MapGenerator (int korkeus, int leveys) {
         this.random = new Random();
@@ -21,7 +21,7 @@ public class MapGenerator {
         this.random = new Random();
         this.korkeus = korkeus;
         this.leveys = leveys;
-        this.tod = tod;
+        this.seinienTod = tod;
     }
     
     
@@ -68,7 +68,7 @@ public class MapGenerator {
         //maali
         kartta[korkeus-1][leveys-1] = '*';
         
-        double laskuri = (korkeus * leveys) * (tod * 0.01);
+        double laskuri = (korkeus * leveys) * (seinienTod * 0.01);
         
         while (laskuri > 0) {
             
